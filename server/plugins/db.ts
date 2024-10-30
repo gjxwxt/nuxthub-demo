@@ -1,24 +1,21 @@
 import { dbPool } from "../config/database";
 import fs from "fs";
-import path from "path";
+// import path from "path";
 import { generateSalt, hashWithSalt } from "../utils/crypto";
-
-const rootDir = path.resolve(process.cwd());
 
 export default defineNitroPlugin(async () => {
   try {
     const connection = await dbPool.getConnection();
     console.log("数据库连接成功");
 
-    const schemaPath = path.join(rootDir, "server/database/schema.sql");
-    console.log("SQL文件路径:", schemaPath);
+    // const schemaPath = path.join(process.cwd(), "server/database/schema.sql");
 
-    if (!fs.existsSync(schemaPath)) {
-      console.error("SQL文件不存在:", schemaPath);
+    if (!fs.existsSync("./server/database/schema.sql")) {
+      console.error("SQL文件不存在:./server/database/schema.sql");
       throw new Error("SQL文件不存在");
     }
 
-    const schema = fs.readFileSync(schemaPath, "utf8");
+    const schema = fs.readFileSync("./server/database/schema.sql", "utf8");
     const statements = schema
       .split(";")
       .filter((statement) => statement.trim().length > 0);
