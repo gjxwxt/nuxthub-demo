@@ -1,12 +1,9 @@
 import { dbPool } from "../config/database";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import { generateSalt, hashWithSalt } from "../utils/crypto";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const rootDir = path.resolve(__dirname, "../..");
+const rootDir = path.resolve(process.cwd());
 
 export default defineNitroPlugin(async () => {
   try {

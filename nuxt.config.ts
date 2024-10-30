@@ -6,6 +6,19 @@ export default defineNuxtConfig({
     experimental: {
       openAPI: true,
     },
+    prerender: {
+      autoSubfolderIndex: false,
+    },
+    output: {
+      dir: ".output",
+      serverDir: ".output/server",
+      publicDir: ".output/public",
+    },
+    // serveStatic: false,
+
+    routeRules: {
+      "/**": { ssr: false }, // 禁用所有路由的 SSR
+    },
   },
 
   components: {
