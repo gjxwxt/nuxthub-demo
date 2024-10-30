@@ -3,22 +3,26 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   nitro: {
+    preset: "cloudflare-pages",
     experimental: {
       openAPI: true,
     },
-    prerender: {
-      autoSubfolderIndex: false,
-    },
-    output: {
-      dir: ".output",
-      serverDir: ".output/server",
-      publicDir: ".output/public",
-    },
+    // experimental: {
+    //   openAPI: true,
+    // },
+    // prerender: {
+    //   autoSubfolderIndex: false,
+    // },
+    // output: {
+    //   dir: ".output",
+    //   serverDir: ".output/server",
+    //   publicDir: ".output/public",
+    // },
     // serveStatic: false,
 
-    routeRules: {
-      "/**": { ssr: false }, // 禁用所有路由的 SSR
-    },
+    // routeRules: {
+    //   "/**": { ssr: false }, // 禁用所有路由的 SSR
+    // },
   },
 
   components: {
